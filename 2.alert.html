@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta Tags  -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- External CSS Styles  -->
+    <!-- 1.Reset CSS Style  -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <!-- 2. Bootstrap  CSS Styles  -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css.map" />
+    <!-- 3. CSS Our Custom Styles  -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Internal Style  -->
+    <style>
+      /* write css code here */
+    </style>
+    <!-- Title  -->
+    <title>Alert</title>
+  </head>
+  <body>
+    <button class="btn btn-primary" title="i'm btn">Notification</button>
+
+    <hr />
+    <br />
+
+    <!-- Start alert -->
+    <div id="liveAlertPlaceholder"></div>
+    <button type="button" class="btn btn-primary" id="liveAlertBtn">
+      Alert
+    </button>
+
+    <!-- Start alert with show-->
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <script>
+      const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
+      const appendAlert = (message, type) => {
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = [
+          `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+          `   <div>${message}</div>`,
+          '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+          "</div>",
+        ].join("");
+
+        alertPlaceholder.append(wrapper);
+      };
+
+      const alertTrigger = document.getElementById("liveAlertBtn");
+      if (alertTrigger) {
+        alertTrigger.addEventListener("click", () => {
+          appendAlert("Wrong", "danger");
+        });
+      }
+    </script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js.map"></script>
+  </body>
+</html>
